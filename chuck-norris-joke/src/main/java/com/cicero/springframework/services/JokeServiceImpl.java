@@ -1,4 +1,4 @@
-package com.cicero.springframework.service;
+package com.cicero.springframework.services;
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes;
 
