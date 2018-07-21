@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+<style>
+.button-success, .button-error, .button-warning, .button-secondary {
+	color: white;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+	background: rgb(28, 184, 65); /* this is a green */
+}
+</style>
+<meta charset="ISO-8859-1">
+<title>Chuck Norris Jokes</title>
+</head>
+<body>
+	<div align="center">
+		<h1 style="align-content: center;">Chuck Norris Jokes</h1>
+
+		<button class="button-success pure-button">
+			<p th:text="${joke}">jokes</p>
+		</button>
+	</div>
+</body>
+</html>
