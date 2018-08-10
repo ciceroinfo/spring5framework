@@ -5,6 +5,26 @@
 <title>Pet - Pet Clinic</title>
 </head>
 <body>
-	<h1 th:text="Pet">Test 1</h1>
+	<h1 th:text="'List of Pets'">Test 1</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>PetType</th>
+				<th>Owner</th>
+				<th>Birthday</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pet : ${pets}">
+				<td th:text="${pet.id}">PetType</td>
+				<td th:text="${pet.petType.name}">PetType</td>
+				<td th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}">Owner</td>
+				<td th:text="${pet.birthdate}">Birthday</td>
+			</tr>
+		</tbody>
+	</table>
+
 </body>
 </html>
