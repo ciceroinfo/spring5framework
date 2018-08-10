@@ -30,28 +30,24 @@ public class DataLoader implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Owner owner1 = new Owner();
-		owner1.setId(1L);
 		owner1.setFirstName("Pamela");
 		owner1.setLastName("Santos");
 
 		ownerService.save(owner1);
 
 		Owner owner2 = new Owner();
-		owner2.setId(2L);
 		owner2.setFirstName("Cícero");
 		owner2.setLastName("Fabio");
 
 		ownerService.save(owner2);
 
 		Vet vet1 = new Vet();
-		vet1.setId(1L);
 		vet1.setFirstName("Vet1");
 		vet1.setLastName("Last Name");
 
 		vetService.save(vet1);
 
 		Vet vet2 = new Vet();
-		vet2.setId(2L);
 		vet2.setFirstName("Vet2");
 		vet2.setLastName("Last Name");
 
@@ -66,7 +62,6 @@ public class DataLoader implements CommandLineRunner {
 		petType2.setName("Dog");
 
 		Pet pet1 = new Pet();
-		pet1.setId(1L);
 		pet1.setOwner(owner1);
 		pet1.setPetType(petType1);
 		pet1.setBirthdate(LocalDate.now());
@@ -74,7 +69,6 @@ public class DataLoader implements CommandLineRunner {
 		petService.save(pet1);
 
 		Pet pet2 = new Pet();
-		pet2.setId(2L);
 		pet2.setOwner(owner1);
 		pet2.setPetType(petType2);
 		pet2.setBirthdate(LocalDate.now());
@@ -82,7 +76,6 @@ public class DataLoader implements CommandLineRunner {
 		petService.save(pet2);
 
 		Pet pet3 = new Pet();
-		pet3.setId(3L);
 		pet3.setOwner(owner2);
 		pet3.setPetType(petType2);
 		pet3.setBirthdate(LocalDate.now());
