@@ -10,6 +10,7 @@ import guru.springframework.model.Pet;
 import guru.springframework.model.PetType;
 import guru.springframework.model.Speciality;
 import guru.springframework.model.Vet;
+import guru.springframework.model.Visit;
 import guru.springframework.services.OwnerService;
 import guru.springframework.services.PetService;
 import guru.springframework.services.PetTypeService;
@@ -97,7 +98,7 @@ public class DataLoader implements CommandLineRunner {
 		pet1.setBirthdate(LocalDate.now());
 		pamela.getPets().add(pet1);
 
-		petService.save(pet1);
+		Pet savedCatMica = petService.save(pet1);
 
 		Pet pet2 = new Pet();
 		pet2.setName("Lola");
@@ -126,6 +127,11 @@ public class DataLoader implements CommandLineRunner {
 
 		ownerService.save(pamela);
 		ownerService.save(cicero);
+		
+		Visit catVisit = new Visit();
+		catVisit.setDate(LocalDate.now());
+		catVisit.setDescription("cat visit");
+		catVisit.setPet(savedCatMica);
 		
 		System.out.println("End loadData...");
 	}
