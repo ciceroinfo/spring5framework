@@ -4,5 +4,5 @@ import guru.springframework.model.Owner;
 
 public interface OwnerService extends CrudService<Owner, Long> {
 
-	Owner fingByLastName(String lastName);
+	Owner findByLastName(String lastName);
 }

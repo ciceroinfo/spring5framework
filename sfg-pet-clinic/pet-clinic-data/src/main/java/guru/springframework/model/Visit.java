@@ -14,7 +14,7 @@ public class Visit extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "name")
+	@Column(name = "date")
 	private LocalDate date;
 	
 	@Column(name = "description")
@@ -22,7 +22,7 @@ public class Visit extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "pet_id")
-	private Pet pets;
+	private Pet pet;
 
 	public LocalDate getDate() {
 		return date;
@@ -40,12 +40,12 @@ public class Visit extends BaseEntity {
 		this.description = description;
 	}
 
-	public Pet getPets() {
-		return pets;
+	public Pet getPet() {
+		return pet;
 	}
 
-	public void setPets(Pet pets) {
-		this.pets = pets;
+	public void setPet(Pet pet) {
+		this.pet = pet;
 	}
 
 }
