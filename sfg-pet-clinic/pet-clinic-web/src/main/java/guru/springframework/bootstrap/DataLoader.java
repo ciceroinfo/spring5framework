@@ -48,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
 	private void loadData() {
 
 		System.out.println("Init loadData...");
-		
+
 		PetType cat = new PetType();
 		cat.setName("Cat");
 		PetType savedCatPetType = petTypeService.save(cat);
@@ -91,23 +91,27 @@ public class DataLoader implements CommandLineRunner {
 		pamela.setCity("Curitiba");
 		pamela.setTelephone("4199999999");
 
-		Pet pet1 = new Pet();
-		pet1.setName("Mica");
-		pet1.setOwner(pamela);
-		pet1.setPetType(savedCatPetType);
-		pet1.setBirthdate(LocalDate.now());
-		pamela.getPets().add(pet1);
+		Owner savedPamela = ownerService.save(pamela);
 
-		Pet savedCatMica = petService.save(pet1);
+		Pet mica = new Pet();
+		mica.setName("Mica");
+		mica.setOwner(savedPamela);
+		mica.setPetType(savedCatPetType);
+		mica.setBirthdate(LocalDate.now());
+		Pet savedCatMica = petService.save(mica);
 
-		Pet pet2 = new Pet();
-		pet2.setName("Lola");
-		pet2.setOwner(pamela);
-		pet2.setPetType(savedDogPetType);
-		pet2.setBirthdate(LocalDate.now());
-		pamela.getPets().add(pet2);
+		pamela.getPets().add(savedCatMica);
+		ownerService.save(pamela);
 
-		petService.save(pet2);
+		Pet lola = new Pet();
+		lola.setName("Lola");
+		lola.setOwner(savedPamela);
+		lola.setPetType(savedDogPetType);
+		lola.setBirthdate(LocalDate.now());
+		Pet savedLola = petService.save(lola);
+
+		pamela.getPets().add(savedLola);
+		ownerService.save(pamela);
 
 		Owner cicero = new Owner();
 		cicero.setFirstName("Cícero");
@@ -115,24 +119,23 @@ public class DataLoader implements CommandLineRunner {
 		cicero.setAddress("R. João das Cove, 175");
 		cicero.setCity("Curitiba");
 		cicero.setTelephone("4199999999");
+		Owner savedCicero = ownerService.save(cicero);
 
-		Pet pet3 = new Pet();
-		pet3.setName("Cachorro");
-		pet3.setOwner(cicero);
-		pet3.setPetType(savedDogPetType);
-		pet3.setBirthdate(LocalDate.now());
-		cicero.getPets().add(pet3);
+		Pet cachorro = new Pet();
+		cachorro.setName("Cachorro");
+		cachorro.setOwner(savedCicero);
+		cachorro.setPetType(savedDogPetType);
+		cachorro.setBirthdate(LocalDate.now());
+		Pet savedCachoro = petService.save(cachorro);
 
-		petService.save(pet3);
-
-		ownerService.save(pamela);
+		cicero.getPets().add(savedCachoro);
 		ownerService.save(cicero);
-		
+
 		Visit catVisit = new Visit();
 		catVisit.setDate(LocalDate.now());
 		catVisit.setDescription("cat visit");
 		catVisit.setPet(savedCatMica);
-		
+
 		System.out.println("End loadData...");
 	}
 
