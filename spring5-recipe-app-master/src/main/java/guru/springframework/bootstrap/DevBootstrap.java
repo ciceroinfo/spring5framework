@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import guru.springframework.domain.Category;
 import guru.springframework.domain.Difficulty;
@@ -18,7 +19,9 @@ import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 	
@@ -34,11 +37,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 	}
 
 	@Override
+	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		recipeRepository.saveAll(getRecipes());
 	}
 
 	private List<Recipe> getRecipes() {
+		
+		log.debug("Recipes load...");
 
         List<Recipe> recipes = new ArrayList<Recipe>(2);
 
